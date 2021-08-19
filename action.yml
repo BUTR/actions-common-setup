@@ -1,0 +1,29 @@
+name: "Common Setup"
+description: ""
+inputs:
+  github-token:
+    description: ''
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Core 3.1
+      uses: actions/setup-dotnet@master
+      with:
+        dotnet-version: 3.1.x
+
+    - name: Setup .NET 5
+      uses: actions/setup-dotnet@master
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Setup BUTR GPR
+      uses: actions/setup-dotnet@master
+      with:
+        source-url: https://nuget.pkg.github.com/BUTR/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{inputs.github-token}}
