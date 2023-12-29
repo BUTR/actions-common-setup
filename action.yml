@@ -16,16 +16,14 @@ runs:
       with:
         submodules: 'recursive'
         fetch-depth: ${{inputs.fetch-depth}}
-        
-    - name: Setup .NET 6
-      uses: actions/setup-dotnet@master
+
+    - name: Setup .NET 6, 7, 8
+    - uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.x.x
-        
-    - name: Setup .NET 7
-      uses: actions/setup-dotnet@master
-      with:
-        dotnet-version: 7.x.x
+        dotnet-version: | 
+          6.x.x
+          7.x.x
+          8.x.x
 
     - name: Ensure NuGet Source
       uses: fabriciomurta/ensure-nuget-source@v1
