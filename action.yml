@@ -11,28 +11,24 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
         fetch-depth: ${{inputs.fetch-depth}}
 
-    - name: Setup .NET 6, 7, 8
-      uses: actions/setup-dotnet@v3
+    - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: | 
           6.x.x
           7.x.x
           8.x.x
 
-    - name: Ensure NuGet Source
-      uses: fabriciomurta/ensure-nuget-source@v1
+    - uses: fabriciomurta/ensure-nuget-source@v1
       with:
         name: 'nuget.org'
         url: 'https://api.nuget.org/v3/index.json'
 
-    - name: Setup BUTR GPR
-      uses: actions/setup-dotnet@master
+    - uses: actions/setup-dotnet@master
       with:
         source-url: https://nuget.pkg.github.com/BUTR/index.json
       env:
