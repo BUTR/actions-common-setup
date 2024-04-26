@@ -11,12 +11,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         submodules: 'recursive'
         fetch-depth: ${{inputs.fetch-depth}}
 
-    - uses: actions/setup-dotnet@v3
+    - uses: actions/setup-dotnet@v4
       with:
         dotnet-version: | 
           6.x.x
@@ -28,7 +28,7 @@ runs:
         name: 'nuget.org'
         url: 'https://api.nuget.org/v3/index.json'
 
-    - uses: actions/setup-dotnet@master
+    - uses: actions/setup-dotnet@v4
       with:
         source-url: https://nuget.pkg.github.com/BUTR/index.json
       env:
